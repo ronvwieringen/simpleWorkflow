@@ -13,6 +13,7 @@ import {
   ArrowRight,
   TrendingUp,
 } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -152,7 +153,7 @@ export default function Dashboard() {
                   Dashboard
                 </a>
                 <a
-                  href="#"
+                  href="/workflows"
                   className="text-slate-600 hover:text-slate-900 hover:bg-slate-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
                   Workflows
@@ -408,12 +409,14 @@ export default function Dashboard() {
                     <DropdownMenuLabel className="text-slate-700">Choose Workflow Type</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {availableWorkflows.map((workflow) => (
-                      <DropdownMenuItem key={workflow.name} className="flex items-center space-x-3 py-3">
-                        <span className="text-lg">{workflow.icon}</span>
-                        <div>
-                          <p className="font-medium text-slate-900">{workflow.name}</p>
-                          <p className="text-xs text-slate-500">{workflow.category}</p>
-                        </div>
+                      <DropdownMenuItem key={workflow.name} className="flex items-center space-x-3 py-3 asChild">
+                        <Link href="/new-request">
+                          <span className="text-lg">{workflow.icon}</span>
+                          <div>
+                            <p className="font-medium text-slate-900">{workflow.name}</p>
+                            <p className="text-xs text-slate-500">{workflow.category}</p>
+                          </div>
+                        </Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
